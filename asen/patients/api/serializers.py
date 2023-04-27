@@ -1,7 +1,20 @@
-from rest_framework.serializers import ModelSerializer
-from asen.patients.models import Patient
+from rest_framework import serializers
 
-class PatientSerializer(ModelSerializer):
+from django.contrib.auth import get_user_model
+
+from asen.patients.models import Patient
+from asen.users.api.serializers import UserSerializer
+
+
+class SimpleUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ["id", "last_login", "date_joined", "name", "email"]
+
+
+class PatientSerializer(serializers.ModelSerializer):
+    user = SimpleUserSerializer()
+
     class Meta:
         model = Patient
-        fields = '__all__'
+        fields = "__all__"

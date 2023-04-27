@@ -13,5 +13,5 @@ class PatientViewSet(ModelViewSet):
     def toggle_patient_status(self, request, pk=None):
         instance = self.get_object()
         instance.status = "disabled" if instance.status == "active" else "active"
-        instance.saved()
+        instance.save()
         return Response({"meesage": f"You changed the patient status to be {instance.status}"})

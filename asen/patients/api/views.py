@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -15,3 +16,10 @@ class PatientViewSet(ModelViewSet):
         instance.status = "disabled" if instance.status == "active" else "active"
         instance.save()
         return Response({"meesage": f"You changed the patient status to be {instance.status}"})
+
+    @action(detail=False, methods=["get"])
+    def get_current_patient(self, request):
+        instance = get_object_or_404(Patient, user=request.user)
+        serializer = PatientSerializer(instance)
+
+        return Response(serializer.data)

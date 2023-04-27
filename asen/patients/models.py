@@ -9,7 +9,7 @@ User = get_user_model()
 # Create your models here.
 class Patient(models.Model):
     PATIENT_STATUS = [("active", "Active"), ("disabled", "Disabled")]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=PATIENT_STATUS)

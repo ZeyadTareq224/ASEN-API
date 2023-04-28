@@ -80,6 +80,8 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_spectacular",
     "drf_yasg",
+    "djoser",
+    "rest_framework_simplejwt",
 ]
 
 LOCAL_APPS = [
@@ -284,6 +286,7 @@ SOCIALACCOUNT_FORMS = {"signup": "asen.users.forms.UserSocialSignupForm"}
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
@@ -291,6 +294,9 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("JWT",),
+}
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
 

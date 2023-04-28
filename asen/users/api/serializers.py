@@ -6,6 +6,7 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
+        ref_name = "CustomUserSerializer"
         model = User
         fields = ["id", "name", "url"]
 

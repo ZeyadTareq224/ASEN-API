@@ -82,6 +82,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "djoser",
     "rest_framework_simplejwt",
+    "celery",
 ]
 
 LOCAL_APPS = [

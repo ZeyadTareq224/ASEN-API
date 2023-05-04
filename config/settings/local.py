@@ -26,7 +26,14 @@ CACHES = {
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env("DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+# SMTP SETTINGS
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "ziyadtr101@gmail.com"
+EMAIL_HOST_PASSWORD = "oxjyrykczjwgzxlb"
+DEFAULT_FROM_EMAIL = "ziyadtr101@gmail.com"
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
@@ -50,3 +57,5 @@ INSTALLED_APPS += ["django_extensions"]  # noqa: F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# Celery settings
+CELERY_BROKER_URL = "amqp://localhost"
